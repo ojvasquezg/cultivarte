@@ -1,0 +1,72 @@
+<mat-sidenav-container class="dashboard-container">
+  <!-- Menú lateral -->
+  <mat-sidenav #sidenav mode="side" opened="false" class="sidenav" mode="over">
+    <div class="sidenav-header">
+      <h2>Menú Principal</h2>
+    </div>
+    <button mat-button [matMenuTriggerFor]="Inicio">Inicio</button>
+    <mat-menu #Inicio="matMenu" id="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="parametros">Parámetros</button>
+      <button mat-menu-item [matMenuTriggerFor]="procesos">Procesos</button>
+      <button mat-menu-item [matMenuTriggerFor]="seguridad">Seguridad</button>
+      <button mat-menu-item>Cerrar sesión</button>
+    </mat-menu>
+
+    <mat-menu #parametros="matMenu">
+      <button mat-menu-item (click)="closeSidenav()" routerLink="/dashboard/plantillas">Plantillas</button>
+      <button mat-menu-item (click)="closeSidenav()" routerLink="/dashboard/tablasCadena">Tablas de cadena</button>
+      <button mat-menu-item (click)="closeSidenav()" routerLink="/dashboard/grid-tablas-valores">Tablas de valores</button>
+      <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+      <button mat-menu-item>Birds</button>
+      <button mat-menu-item>Mammals</button>
+    </mat-menu>
+
+    <mat-menu #procesos="matMenu">
+      <button mat-menu-item>Insects</button>
+      <button mat-menu-item>Molluscs</button>
+      <button mat-menu-item>Crustaceans</button>
+      <button mat-menu-item>Corals</button>
+      <button mat-menu-item>Arachnids</button>
+      <button mat-menu-item>Velvet worms</button>
+      <button mat-menu-item>Horseshoe crabs</button>
+    </mat-menu>
+
+
+
+    <mat-menu #amphibians="matMenu">
+      <button mat-menu-item>Sonoran desert toad</button>
+      <button mat-menu-item>Western toad</button>
+      <button mat-menu-item>Arroyo toad</button>
+      <button mat-menu-item>Yosemite toad</button>
+    </mat-menu>
+
+    <mat-menu #reptiles="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item>Banded Gila Monster</button>
+      <button mat-menu-item>Black Tree Monitor</button>
+      <button mat-menu-item>Blue Spiny Lizard</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+    </mat-menu>
+    <mat-menu #seguridad="matMenu">
+      <button mat-menu-item>Usuarios</button>
+      <button mat-menu-item>Roles</button>
+    </mat-menu>
+
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <!-- Barra superior -->
+    <mat-toolbar class="header-toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 style="font-size: 30px!important;">Cultivarte 1.0</h1> <span><strong><i class="fa fa-user" style="border:2px solid white;padding:6px 6px 0px 6px ;border-radius: 50%; "></i></strong> {{usuario}}</span>
+    </mat-toolbar>
+
+    <!-- Contenido -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

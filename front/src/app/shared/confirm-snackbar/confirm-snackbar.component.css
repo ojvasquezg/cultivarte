@@ -1,0 +1,44 @@
+.snackbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap:10px;
+}
+
+.snackbar-buttons {
+  display: flex;
+  gap: 10px; /* Espacio entre botones */
+}
+
+.snackbar-buttons button {
+  font-weight: bold;
+  text-transform:capitalize;
+}
+
+.custom-snackbar {
+  color: #ffffff !important; /* Texto blanco */
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 350px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón de confirmación */
+.snackbar-buttons button[color="warn"] {
+  background-color: #e74c3c !important; /* Rojo */
+  color: white !important;
+  margin-left: 10px;
+  padding: 0px !important  ;
+  border-radius: 5px !important;
+}
+
+/* Botón de cancelación */
+.snackbar-buttons button[color="primary"] {
+  background-color: #4CAF50 !important; /* Azul */
+  color: white !important;
+  margin-left: 10px;
+  padding: 0px !important  ;
+  border-radius: 5px !important;
+}

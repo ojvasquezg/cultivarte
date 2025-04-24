@@ -1,0 +1,194 @@
+<!-- Contenedor principal -->
+<div class="card-content">
+  <!-- Barra de búsqueda --><!--
+  <div class="input-field">
+    <i class="material-icons prefix">search</i>
+    <input
+      class="input-busqueda"
+      id="busqueda"
+      placeholder="Buscar registros"
+      [(ngModel)]="terminoDeBusqueda"
+      (input)="cambioDeBusqueda()"
+    />
+  </div>-->
+
+  <!-- Controles de paginación -->
+  <div class="pagination-controls">
+    <div style="display: flex; flex-direction: row; gap: 3px">
+      <button
+        (click)="irAPrimeraPagina()"
+        [disabled]="isPreviousDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons">first_page</i>
+      </button>
+      <button
+        (click)="anteriorPagina()"
+        [disabled]="isPreviousDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons prefix">navigate_before</i>
+      </button>
+    </div>
+    <div class="items-pagina" style="width: 400px">
+      <label for="registrosPorPagina">Elementos por página:</label>
+      <select
+        [(ngModel)]="registrosPorPagina"
+        id="registrosPorPagina"
+        (change)="elementosPorCambioDePagina($event)"
+      >
+        <option *ngFor="let option of nroRegistrosPorPagina" [value]="option">
+          {{ option }}
+        </option></select
+      >&nbsp;
+      <span>Página {{ paginaActual }} de {{ getTotalPaginas() }}</span>
+    </div>
+    <div style="display: flex; flex-direction: row; gap: 3px">
+      <button
+        (click)="siguientePagina()"
+        [disabled]="isNextDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons prefix">navigate_next</i>
+      </button>
+      <button
+        (click)="irAUltimaPagina()"
+        [disabled]="isNextDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons">last_page</i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabla de detalle -->
+  <div class="table-responsive">
+    <table class="striped">
+      <thead class="thead">
+        <tr>
+          <th (click)="ordenarTabla('id')" style="display: none">
+            Id
+            <span *ngIf="ordenarColumna === 'id'">
+              <i *ngIf="ordenarDireccion === '↑'" class="fa fa-arrow-up"></i>
+              <i *ngIf="ordenarDireccion === '↓'" class="fa fa-arrow-down"></i>
+            </span>
+          </th>
+          <th (click)="ordenarTabla('id_participante')">
+            Beneficiario
+            <span *ngIf="ordenarColumna === 'valor'">
+              <i *ngIf="ordenarDireccion === '↑'" class="fa fa-arrow-up"></i>
+              <i *ngIf="ordenarDireccion === '↓'" class="fa fa-arrow-down"></i>
+            </span>
+          </th>
+
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of registrosPaginados; let i = index">
+          <td style="display: none">
+            <div class="input-field">
+              <input
+                [(ngModel)]="registro.id"
+                id="input-{{ registro.id }}"
+                type="text"
+                class="validate"
+                style="width: 100px !important"
+                maxlength="100"
+                (ngModelChange)="cambioDeDato(registro)"
+                readonly
+              />
+            </div>
+          </td>
+          <td>
+            <div class="input-field" style="width: 50%!important; background-color: transparent;">
+              <select
+                [(ngModel)]="registro.id_participante"
+                (ngModelChange)="cambioDeDato(registro)"
+
+              >
+                <option
+                  *ngFor="let beneficiario of beneficiarios"
+                  [value]="beneficiario.id"
+                >
+                  {{ beneficiario.valor }}
+                </option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <div style="display: flex; flex-direction: row; gap: 3px">
+              <button class="btn green" (click)="adicionarNuevaFila(i)">
+                <i class="material-icons prefix">add_box</i>
+              </button>
+              <button
+                *ngIf="registro.id === 0"
+                class="btn orange"
+                (click)="cancelarEdicion(registro)"
+              >
+                <i class="material-icons">undo</i>
+              </button>
+              <button
+                *ngIf="registro.id !== 0"
+                class="btn red"
+                (click)="eliminarRegistro(registro)"
+                style="background: none; border: none; cursor: pointer"
+              >
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Controles de paginación al final -->
+  <div class="pagination-controls" *ngIf="registrosPorPagina !== 5">
+    <div style="display: flex; flex-direction: row">
+      <button
+        (click)="irAPrimeraPagina()"
+        [disabled]="isPreviousDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons">first_page</i>
+      </button>
+      <button
+        (click)="anteriorPagina()"
+        [disabled]="isPreviousDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons prefix">navigate_before</i>
+      </button>
+    </div>
+    <div class="items-pagina" style="width: 400px">
+      <label for="registrosPorPagina">Elementos por página:</label>
+      <select
+        [(ngModel)]="registrosPorPagina"
+        id="registrosPorPagina"
+        (change)="elementosPorCambioDePagina($event)"
+      >
+        <option *ngFor="let option of nroRegistrosPorPagina" [value]="option">
+          {{ option }}
+        </option></select
+      >&nbsp;
+      <span>Página {{ paginaActual }} de {{ getTotalPaginas() }}</span>
+    </div>
+    <div style="display: flex; flex-direction: row; gap: 3px">
+      <button
+        (click)="siguientePagina()"
+        [disabled]="isNextDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons prefix">navigate_next</i>
+      </button>
+      <button
+        (click)="irAUltimaPagina()"
+        [disabled]="isNextDisabled()"
+        class="btn green"
+      >
+        <i class="material-icons">last_page</i>
+      </button>
+    </div>
+  </div>
+</div>

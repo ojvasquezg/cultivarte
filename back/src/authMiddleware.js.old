@@ -1,0 +1,6 @@
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'tu_clave_secreta'; // Debe ser la misma clave usada para generar el token
+
+
+
+module.exports = verificarToken;

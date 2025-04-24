@@ -1,0 +1,19 @@
+<ul class="menu">
+  <li *ngFor="let item of menuItems" class="menu-item">
+    <span *ngIf="!item.children || item.children.length === 0; else hasChildren"
+          class="menu-label"
+          (click)="navigateTo(item.route)">
+      {{ item.label }}
+    </span>
+    <ng-template #hasChildren>
+      <span class="menu-label">{{ item.label }}</span>
+      <ul class="submenu">
+        <li *ngFor="let child of item.children" class="submenu-item" >
+          <span class="submenu-label" (click)="navigateTo(child.route)">
+            {{ child.label }}
+          </span>
+        </li>
+      </ul>
+    </ng-template>
+  </li>
+</ul>

@@ -1,0 +1,27 @@
+<mat-sidenav-container class="dashboard-container">
+  <!-- Menú lateral -->
+  <mat-sidenav #sidenav mode="side" opened="false" class="sidenav" mode="over">
+    <div class="sidenav-header">
+      <h2>Menú Principal</h2>
+    </div>
+    <!--<app-menu (sidenavClose)="sidenav.close()"></app-menu>-->
+    <app-menu2 (sidenavClose)="sidenav.close()"></app-menu2>
+
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <!-- Barra superior -->
+    <mat-toolbar class="header-toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h2 style="font-size: 32px;font-weight: 500;font-family: 'Sensation Bold';">Cultivarte</h2> <span style="font-size: 18px;font-weight: 400;font-family: 'Sensation Bold';"><i class="fa fa-user" style="border:2px solid white;padding: 2px 3px 1px 3px ;border-radius: 50%; "></i> {{usuario}}</span>
+    </mat-toolbar>
+
+    <!-- Contenido -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

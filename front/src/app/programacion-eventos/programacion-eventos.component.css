@@ -1,0 +1,301 @@
+.card {
+  width: 100%;
+  border-radius: 10px; /* Menos curvatura */
+  padding: 5px; /* Reduce espacio interno */
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: #f5f5f5;
+}
+.card .card-content {
+  padding: 0px;
+  border-radius: 0 0 2px 2px;
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100% !important; /* Cambiado a 50% */
+  height: 100% !important;
+  max-height: 100% !important; /* Asegúrate de que cubra toda la pantalla */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  display: none; /* Por defecto oculto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex !important; /* Activa Flex para centrar el modal-content */
+  background-color: rgba(0, 0, 0, 0.5) !important; /* Fondo oscuro */
+  align-items: center !important; /* Cambiado a start para alinear al inicio */
+  padding: 0px !important; /* Cambiado a 0px para eliminar el padding */
+}
+
+.modal.show .modal-content {
+  /* Aquí tus estilos */
+  background-color: #fafafa !important;
+  width: 70% !important;
+  max-width: 1920px !important;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: white !important; /* Fondo blanco */
+  padding: 20px !important; /* Espaciado interno */
+  width: 100% !important; /* Toma todo el ancho disponible del contenedor flex */
+
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para inputs */
+.modal-content input[type="text"],
+.modal-content input[type="datetime-local"],
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.modal-content input[type="datetime-local"] {
+  width: 250px;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Estilo para labels */
+.modal-content label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.input-field input,
+.input-field select {
+  /*padding: 5px;*/ /* Espacio interno para mejor apariencia */
+
+  border: 1px solid #ccc; /* Borde para mejor visibilidad */
+  background-color: white;
+  /*border-radius: 4px;*/ /* Bordes redondeados */
+
+  font-size: 14px;
+  padding: 5px;
+  height: 30px; /* Misma altura para ambos */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  vertical-align: bottom; /* Alinea verticalmente */
+}
+/* Botones */
+.pagination-controls-crud {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.crud {
+  font-size: 9px !important;
+  padding: 2px 5px !important; /* Reduce el padding vertical */
+  line-height: 1 !important; /* Ajusta la altura de línea */
+}
+
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 5px; /* Reduce espacio interno */
+}
+
+.striped {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; /* Letra más pequeña */
+}
+
+th {
+  text-align: left !important;
+  background-color: #ff671b;
+  padding-bottom: 5px 0px 7px 0px !important;
+}
+
+.striped td {
+  padding: 6px; /* Reduce el padding en las celdas */
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+td {
+  padding: 0px !important;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Reduce espacio superior */
+  padding: 5px 10px 5px 10px; /* Menos espacio vertical */
+}
+
+/* Ajusta los botones de paginación */
+button {
+  font-size: 13px; /* Botones con texto más pequeño */
+  padding: 5px 10px; /* Reduce el tamaño del botón */
+}
+
+/* Ajusta los campos de entrada y selects */
+input select {
+  font-size: 13 px;
+  height: 30px; /* Reduce altura */
+}
+
+select {
+  display: block;
+  border: 1px solid #ccc; /* Borde para mejor visibilidad */
+  background-color: white;
+  font-size: 14px;
+  padding: 5px;
+  height: 30px; /* Misma altura para ambos */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+
+}
+#esInstitucional {
+  opacity: 1 !important;
+  z-index: 2000;
+
+
+}
+#noAtencion{
+  opacity: 1 !important;
+
+}/* Reset para checkboxes en el modal */
+.modal-content input[type="checkbox"] {
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+  opacity: 1 !important;
+  position: static !important;
+  z-index: auto !important;
+  pointer-events: auto !important;
+}
+
+/* Asegura que los labels no estén bloqueando */
+.modal-content label {
+  pointer-events: none;
+}
+
+/* Contenedor específico para checkboxes */
+.form-group-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Elimina cualquier transformación que pueda afectar */
+.modal-content {
+  transform: none !important;
+}
+
+
+::ng-deep .fc-toolbar-title,::ng-deep .fc-event-title  {
+  font-family: 'Sensation Bold', sans-serif !important;
+  font-size: 20px; /* opcional, puedes ajustar */
+}
+
+::ng-deep ::ng-deep .fc-event-title  {
+  font-family: 'Sensation Bold', sans-serif !important;
+  font-size: 14px!important;
+  color: black !important;
+}
+
+
+/*Solo para autocompletar*/
+/* Contenedor específico para el autocompletado */
+.autocomplete-container {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* Estilos para el mat-form-field */
+.autocomplete-container .mat-mdc-form-field {
+  width: 30%;
+  background-color: transparent !important; /* Fondo transparente */
+  padding: 0px !important; /* Eliminar padding interno */
+margin: 0px;}
+
+/* Reducir padding y ajustar el infix */
+.autocomplete-container .mat-mdc-form-field .mat-mdc-form-field-infix {
+  padding: 0px 0 !important; /* Reducir padding vertical */
+  border-top: 0 !important; /* Eliminar espacio superior adicional */
+  width: 800px !important; /* Ancho fijo para el input */
+  background-color: green !important; /* Cambiar color de fondo */
+}
+
+/* Ajustar el input dentro del mat-form-field */
+.autocomplete-container .mdc-text-field--outlined .mat-mdc-form-field-input {
+  padding: 4px 8px !important; /* Reducir padding del input */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  line-height: 1.2; /* Reducir altura de línea */
+}
+
+/* Ajustar la etiqueta */
+.autocomplete-container .mat-mdc-form-field-label {
+  top: 1em !important; /* Ajustar posición de la etiqueta */
+  font-size: 14px !important; /* Tamaño de fuente más pequeño */
+}
+
+/* Estilos para la lista desplegable del autocompletado */
+.autocomplete-container .mat-mdc-autocomplete-panel {
+  max-height: 150px !important; /* Limitar altura máxima */
+  overflow-y: auto; /* Habilitar scroll */
+  border-radius: 4px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Reducir padding y altura de las opciones */
+.autocomplete-container .mat-mdc-option {
+  padding: 4px 8px !important; /* Reducir padding */
+  font-size: 14px !important; /* Tamaño de fuente más pequeño */
+  line-height: 1.4 !important; /* Reducir altura de línea */
+  min-height: 32px !important; /* Reducir altura mínima */
+}
+
+/* Estilo para la opción seleccionada o al pasar el ratón */
+.autocomplete-container .mat-mdc-option:hover,
+.autocomplete-container .mat-mdc-option.mat-mdc-option-active {
+  background-color: #e0e0e0 !important; /* Fondo más claro */
+}
+
+/* Ajustar el formulario para consistencia */
+.form-group {
+  margin-bottom: 8px;
+}
+
+/* Reducir padding del modal */
+.modal-content {
+  padding: 16px !important;
+}
+
+/* Ajustar etiquetas del formulario */
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+/* fin solo para autocompletar*/

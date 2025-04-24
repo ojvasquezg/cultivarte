@@ -1,0 +1,9 @@
+/back/node_modules
+/front/node_modules
+/front/.angular
+/front/.vscode		
+/back/package.json
+/front/package.json
+/back/package-lock.json
+/front/package-lock.json
+/front/yarn.lock
