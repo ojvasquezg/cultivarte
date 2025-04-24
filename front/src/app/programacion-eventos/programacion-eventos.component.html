@@ -25,7 +25,7 @@
           "
         >
           <label for="idNombreEvento">Nombre del Evento:</label>
-          <div class="autocomplete-container">
+          <div class="autocomplete-container" *ngIf="!isDisabled">
             <input
               style="
                 background-color: transparent !important;
@@ -47,6 +47,7 @@
               #autoNombreEvento="matAutocomplete"
               [displayWith]="displayNombreEvento"
               (optionSelected)="onNombreEventoSelected($event)"
+
             >
               <mat-option
                 *ngFor="let nombreEvento of filteredNombresEventos | async"
@@ -56,6 +57,7 @@
               </mat-option>
             </mat-autocomplete>
           </div>
+          <div *ngIf="isDisabled"><span class="span">{{evento.nombreSesion}}</span></div>
         </div>
         <div
           style="
@@ -70,7 +72,7 @@
           <!-- Eje Temático -->
           <div class="form-group" style="background-color: transparent">
             <label for="idEjeTematico">Eje Temático:</label>
-            <div class="autocomplete-container">
+            <div class="autocomplete-container" *ngIf="!isDisabled">
               <input
                 style="
                   background-color: transparent !important;
@@ -101,12 +103,14 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
+            <div *ngIf="isDisabled"><span class="span">{{evento.ejeTematico}}</span></div>
+
           </div>
 
           <!-- Tipo de evento -->
           <div class="form-group" style="background-color: transparent">
             <label for="idTipoEvento">Tipo de evento:</label>
-            <div class="autocomplete-container">
+            <div class="autocomplete-container" *ngIf="!isDisabled">
               <input
                 style="
                   background-color: transparent !important;
@@ -137,11 +141,13 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
+            <div *ngIf="isDisabled"><span class="span">{{evento.tipoEvento}}</span></div>
+
           </div>
           <!-- Ubicación -->
           <div class="form-group" style="background-color: transparent">
             <label for="idUbicacion">Ubicación:</label>
-            <div class="autocomplete-container">
+            <div class="autocomplete-container" *ngIf="!isDisabled">
               <input
                 style="
                   background-color: transparent !important;
@@ -172,6 +178,8 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
+            <div *ngIf="isDisabled"><span class="span">{{evento.ubicacion}}</span></div>
+
           </div>
         </div>
 
@@ -183,7 +191,7 @@
             id="descripcionGrupo"
             [(ngModel)]="evento.descripcionGrupo"
             name="descripcionGrupo"
-            required
+            required [disabled]="isDisabled"
           />
         </div>
 
@@ -204,6 +212,7 @@
             >
             <input
               type="checkbox"
+              [disabled]="isDisabled"
               id="noAtencion"
               [(ngModel)]="evento.noAtencion"
               name="noAtencion"
@@ -220,6 +229,7 @@
             <label for="desdeNoAtencion">No atencion desde:</label>
             <input
               type="datetime-local"
+              [disabled]="isDisabled"
               id="desdeNoAtencion"
               [(ngModel)]="evento.desdeNoAtencion"
               name="desdeNoAtencion"
@@ -234,6 +244,7 @@
             <label for="hastaNoAtencion">No atencion Hasta:</label>
             <input
               type="datetime-local"
+              [disabled]="isDisabled"
               id="hastaNoAtencion"
               [(ngModel)]="evento.hastaNoAtencion"
               name="hastaNoAtencion"
@@ -255,6 +266,7 @@
             >
             <input
               type="checkbox"
+              [disabled]="isDisabled"
               id="esInstitucional"
               [(ngModel)]="evento.esInstitucional"
               name="esInstitucional"

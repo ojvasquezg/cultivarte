@@ -240,6 +240,16 @@ select {
   padding: 0px !important; /* Eliminar padding interno */
 margin: 0px;}
 
+.span{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  color:#999999;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 /* Reducir padding y ajustar el infix */
 .autocomplete-container .mat-mdc-form-field .mat-mdc-form-field-infix {
   padding: 0px 0 !important; /* Reducir padding vertical */

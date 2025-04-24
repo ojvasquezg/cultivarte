@@ -528,6 +528,16 @@ export class ProgramacionEventosComponent implements OnInit {
     this.setCurrentValuesAutocomplete();
     this.evento.idSesion = 0; // Reiniciar el ID de la sesión al crear un nuevo evento
   }
+  get isDisabled(): boolean {
+    let disabled = false;
+    if (this.evento.tipoEdicion === 'sesion') {
+      disabled = true;
+    } else {
+      disabled = false;
+    }
+    console.log('disabled:', disabled);
+    return disabled;
+  }
 
   guardarEvento() {
     console.log('Evento::', this.evento.idSesion);
