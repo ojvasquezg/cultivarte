@@ -530,7 +530,7 @@ export class ProgramacionEventosComponent implements OnInit {
   }
 
   guardarEvento() {
-    console.log('Evento:', this.evento.idSesion);
+    console.log('Evento::', this.evento.idSesion);
     if (this.evento.idSesion === 0 || this.evento.idSesion === null) {
       this.detEventosSesionesComponent.emitirRegistros();
       console.log(
